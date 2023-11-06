@@ -131,7 +131,7 @@ class _SingproductState extends State<Singproduct> {
             ),
           ),
           SizedBox(height: 20,),
-          Container(height:150 ,
+          Container(height:220,
           decoration: BoxDecoration(
             color: Colors.white,
             boxShadow: [
@@ -159,10 +159,159 @@ class _SingproductState extends State<Singproduct> {
                     Text("0.769 kg")
                   ],
                 ),
+                 SizedBox(height: 10,),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Wastage"),
+                    Text(".27 kg")
+                  ],
+                ),
+                 SizedBox(height: 10,),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Final Weight"),
+                    Text("0.50 kg")
+                  ],
+                ),
+                 SizedBox(height: 10,),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Delivery charge :"),
+                    Text("FREE",style: TextStyle(color: Colors.red),)
+                  ],
+                ),
+                Divider(),
+                 SizedBox(height: 10,),
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Final Price",style: TextStyle(fontWeight: FontWeight.bold),),
+                    Text("0.769 * 580 = 446",style: TextStyle(fontWeight: FontWeight.w400),)
+                  ],
+                ),
               ],
             ),
           ),
-          )
+          ),
+          SizedBox(height: 20,),
+          Container(
+            height: 120,
+            decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black
+              )
+            ]
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: ListView(
+              children: [
+                Text("Description",style: TextStyle(fontWeight: FontWeight.bold),),
+                SizedBox(height: 10,),
+                Text("The seer fish is a type of mackerel.They are pelagic fishes,fast swimmwers and predatory in nature that fights vigorously when caught. Seer fishes are mainly caught using hooks and lines. They are a delicacy in several regions of South India and Sri Lanka.The most expensive variety of seer fish is sold in Tamil Nadu, and is known as Vanjaram. Maharashtrians know it as Surmai, while the seafood lovers of Goa call it Iswan/Viswon. It is eaten in Kerala too and is sold as Neymeen across south Kerala.")
+              ],
+            ),
+          ),
+          ),
+          SizedBox(height: 20,),
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Text("Similar Products",style: TextStyle(fontWeight: FontWeight.bold),),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8,left: 8,right: 8),
+            child: SizedBox(height: 360,
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 5,
+                        crossAxisSpacing: 5), 
+                        itemCount: 4,
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.all(10),
+                            child:
+                             InkWell(
+                              onTap: () {
+                               // Navigator.push(context, MaterialPageRoute(builder: (context) => Singproduct(),));
+                              },
+                               child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  boxShadow: [
+                                    BoxShadow(color: Colors.black)
+                                  ]
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(5),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        height: 75,
+                                        child: Image.asset("assets/images/ayala img.jpeg"),),
+                                      Text("Indian Mackerel/ Ayala / Bangda / Aiyla(large 6+ count/kg)"),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 5),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                          Text("Rs. 299.00/500g"),
+                                          Text("Rs 309.00",style: TextStyle(
+                                            decoration: TextDecoration.lineThrough,
+                                            color: Colors.grey,fontSize: 10
+                                          ),)
+                                        ],),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                                       ),
+                             ),
+                          );
+                          
+                        },),
+                  ),
+          ),
+          TextButton(onPressed: (){}, child: Text("View More")),
+          SizedBox(height: 50,),
+          Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  child: Container(height: 55,
+                    decoration: BoxDecoration(color: Colors.white),
+                    child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.favorite),
+                        Text("Save",style: TextStyle(fontWeight: FontWeight.bold),)
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: InkWell(
+                  child: Container(height: 55,
+                    decoration: BoxDecoration(color: Colors.black),
+                    child: Center(child: Text("Add to cart",
+                    style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                    )),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: InkWell(
+                  child: Container(height: 55,
+                    decoration: BoxDecoration(color: Colors.red),
+                    child: Center(child: Text("Buy Now",
+                    style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                  ),
+                ),
+              )
+            ],
+          ),
+          
         ],
       ),
     );

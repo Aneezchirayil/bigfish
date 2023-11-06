@@ -69,6 +69,7 @@ flutter:
     - assets/images/ayala img.jpeg
     - assets/images/All products.png
     - assets/images/seerfish.jpeg
+    - assets/images/ghee rice.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,5 +1,5 @@
 import 'package:bigfishaneez/Products/product.dart';
-import 'package:bigfishaneez/recipes.dart';
+import 'package:bigfishaneez/Recipies/recipes.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
