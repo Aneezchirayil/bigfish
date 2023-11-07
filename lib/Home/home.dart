@@ -2,6 +2,7 @@ import 'package:bigfishaneez/Home/Screen/categories.dart';
 import 'package:bigfishaneez/Home/Screen/homepage.dart';
 import 'package:bigfishaneez/Home/Screen/settings.dart';
 import 'package:bigfishaneez/Home/about.dart';
+import 'package:bigfishaneez/Home/edit.dart';
 import 'package:bigfishaneez/Login/login.dart';
 
 import 'package:bigfishaneez/Recipies/recipes.dart';
@@ -67,11 +68,13 @@ class _HomepageState extends State<Homepage> {
                 title: Text("Refer & Earn"),
                 onTap: (){},
               ),
-              // ListTile(
-              //   leading: Icon(Icons.local_offer_sharp),
-              //   title: Text("Offers"),
-              //   onTap: (){},
-              // ),
+              ListTile(
+                leading: Icon(Icons.edit),
+                title: Text("Edit Profile"),
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Editprofile(),));
+                },
+              ),
               ListTile(
                 leading: Icon(Icons.ballot),
                 title: Text("Recipes"),
