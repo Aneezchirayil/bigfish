@@ -1,6 +1,11 @@
-import 'package:bigfishaneez/Products/product.dart';
+import 'package:bigfishaneez/Home/Screen/categories.dart';
+import 'package:bigfishaneez/Home/Screen/homepage.dart';
+import 'package:bigfishaneez/Home/Screen/settings.dart';
+import 'package:bigfishaneez/Home/about.dart';
+import 'package:bigfishaneez/Login/login.dart';
+
 import 'package:bigfishaneez/Recipies/recipes.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+
 import 'package:flutter/material.dart';
 
 
@@ -10,9 +15,9 @@ class Homepage extends StatefulWidget {
   @override
   State<Homepage> createState() => _HomepageState();
 }
-final List<Color> colors =[Colors.pink,Colors.lime,Colors.lightBlue];
-var Categories =["freshfish","seerfish","crab","pomfret"];
+
 var indexnum=0;
+List screen=[Homescreen(),Categoriespage(),Settingpage()];
 
 class _HomepageState extends State<Homepage> {
   @override
@@ -43,7 +48,9 @@ class _HomepageState extends State<Homepage> {
               ListTile(
                 leading: Icon(Icons.login),
                 title: Text("Login"),
-                onTap: (){},
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Loginpage(),));
+                },
               ),
               ListTile(
                 leading: IconButton(
@@ -51,18 +58,20 @@ class _HomepageState extends State<Homepage> {
                   color: Colors.grey,)),
                 title: Text("All Products"),
                 trailing: Icon(Icons.arrow_drop_down,),
-                onTap: (){},
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Homescreen(),));
+                },
               ),
               ListTile(
                 leading: Icon(Icons.local_library),
                 title: Text("Refer & Earn"),
                 onTap: (){},
               ),
-              ListTile(
-                leading: Icon(Icons.local_offer_sharp),
-                title: Text("Offers"),
-                onTap: (){},
-              ),
+              // ListTile(
+              //   leading: Icon(Icons.local_offer_sharp),
+              //   title: Text("Offers"),
+              //   onTap: (){},
+              // ),
               ListTile(
                 leading: Icon(Icons.ballot),
                 title: Text("Recipes"),
@@ -78,7 +87,9 @@ class _HomepageState extends State<Homepage> {
               ListTile(
                 leading: Icon(Icons.report),
                 title: Text("About"),
-                onTap: (){},
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>Aboutpage(),));
+                },
               ),
               ListTile(
                 leading: Icon(Icons.call),
@@ -123,128 +134,7 @@ class _HomepageState extends State<Homepage> {
           ),
            preferredSize:Size.fromHeight(50) ,),
          ),
-       body: ListView(
-        children: [
-          CarouselSlider.builder(
-            itemCount: colors.length, 
-            itemBuilder: (context, index, realIndex) {
-              return Padding(
-                padding: const EdgeInsets.all(10),
-                child: Container(
-                  height: 250,
-                  decoration: BoxDecoration(
-                    color: colors[index],
-                    borderRadius: BorderRadius.circular(15)
-                  ),
-                ),
-              );
-            }, options: CarouselOptions(
-              autoPlay: true,
-              aspectRatio:2.0,
-              enlargeCenterPage: true,
-            ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Categories",style: TextStyle(fontWeight: FontWeight.bold),),
-                  TextButton(onPressed: (){}, child: Text("View All"))
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 360,
-              child: GridView.builder(
-                
-                scrollDirection: Axis.horizontal,
-                gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisSpacing: 5,
-                  crossAxisSpacing: 5,
-                crossAxisCount: 2) , 
-                itemCount: Categories.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Productpage(),));
-                    },
-                    child: Container(
-                      // height: 200,
-                      // width: 200,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [BoxShadow(
-                          color: Colors.black,
-                          
-                        )]
-                      ),
-                      child: Center(child: Text(Categories[index])),
-                    ),
-                  ),
-                );
-              },),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Fresh Arrival",style: TextStyle(fontWeight: FontWeight.bold),),
-                  TextButton(onPressed: (){}, child: Text("View All"))
-                ],
-              ),
-            ),
-            SizedBox(height: 360,
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 5,
-                  crossAxisSpacing: 5), 
-                  itemCount: 4,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(10),
-                      child:
-                       Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(color: Colors.black)
-                          ]
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(5),
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 75,
-                                child: Image.asset("assets/images/ayala img.jpeg"),),
-                              Text("Indian Mackerel/ Ayala / Bangda / Aiyla(large 6+ count/kg)"),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                  Text("Rs. 299.00/500g"),
-                                  Text("Rs 309.00",style: TextStyle(
-                                    decoration: TextDecoration.lineThrough,
-                                    color: Colors.grey,fontSize: 10
-                                  ),)
-                                ],),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                    
-                  },),
-            )
-
-            
-        ],
-       ),
+        body:screen[indexnum],
        bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.shifting,
         currentIndex: indexnum,
