@@ -1,5 +1,6 @@
 
 import 'package:bigfishaneez/Home/Products/product.dart';
+import 'package:bigfishaneez/Home/Screen/categories.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class Homescreen extends StatefulWidget {
   State<Homescreen> createState() => _HomescreenState();
 }
 final List<Color> colors =[Colors.pink,Colors.lime,Colors.lightBlue];
+List imag=["assets/images/fp1.jpg","assets/images/fp2.jpg","assets/images/fp3.jpg"];
 var Categories =["freshfish","seerfish","crab","pomfret"];
 class _HomescreenState extends State<Homescreen> {
   @override
@@ -26,7 +28,8 @@ class _HomescreenState extends State<Homescreen> {
                 child: Container(
                   height: 250,
                   decoration: BoxDecoration(
-                    color: colors[index],
+                    image: DecorationImage(image: AssetImage(imag[index]),fit: BoxFit.fill),
+                    //color: colors[index],
                     borderRadius: BorderRadius.circular(15)
                   ),
                 ),
@@ -42,7 +45,9 @@ class _HomescreenState extends State<Homescreen> {
               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text("Categories",style: TextStyle(fontWeight: FontWeight.bold),),
-                  TextButton(onPressed: (){}, child: Text("View All"))
+                  TextButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Categoriespage(),));
+                  }, child: Text("View All"))
                 ],
               ),
             ),
@@ -73,7 +78,19 @@ class _HomescreenState extends State<Homescreen> {
                           
                         )]
                       ),
-                      child: Center(child: Text(Categories[index])),
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 100,
+                              child: Image(image: AssetImage("assets/images/ff.jpeg")),
+                            ),
+                            SizedBox(height: 10,),
+                            Text(Categories[index]),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 );

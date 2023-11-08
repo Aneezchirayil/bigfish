@@ -18,104 +18,119 @@ class _EditprofileState extends State<Editprofile> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(color: Colors.white
+        decoration: BoxDecoration(color: Colors.transparent
         ),
         child: 
         Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Column(
+          child: ListView(
             children: [
               SizedBox(height: 10,),
-              Container(height: 80,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black
-                  )
-                ]
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: "Name"
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: "Mobile Number"
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: "Email"
-                      ),
-                    ),
-                  ],
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Container(height: 200,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black,//blurRadius: 0.1
+                    )
+                  ]
                 ),
-              ),
-        
-              ),
-              Container(height: 150,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black
-                  )
-                ]
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: "City"
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: "Locality,area or street "
-                      ),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: "Flat no, Building name"
-                      ),
-                    ),
-                     Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                       children: [
-                         TextField(
-                          decoration: InputDecoration(
-                            hintText: "Pincode"
-                          ),
-                    ),
-                    SizedBox(width: 10,),
-                     TextField(
-                      decoration: InputDecoration(
-                        hintText: "State"
-                      ),
-                    ),
-                       ],
-                     ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
                       TextField(
-                      decoration: InputDecoration(
-                        hintText: "Landmark(optional)"
+                        decoration: InputDecoration(
+                          hintText: "Name"
+                        ),
                       ),
-                    ),
-                  ],
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: "Mobile Number"
+                        ),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: "Email"
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                      
                 ),
               ),
-        
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Container(height: 280,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black,//blurRadius: 0.1
+                    )
+                  ]
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: "City"
+                        ),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: "Locality,area or street "
+                        ),
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          hintText: "Flat no, Building name"
+                        ),
+                      ),
+                       Expanded(
+                         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                           children: [
+                             Expanded(
+                               child: TextField(
+                                decoration: InputDecoration(
+                                  hintText: "Pincode"
+                                ),
+                                             ),
+                             ),
+                                           Expanded(child: SizedBox(width: 7,)),
+                         Expanded(
+                           child: TextField(
+                            decoration: InputDecoration(
+                              hintText: "State"
+                            ),
+                                             ),
+                         ),
+                           ],
+                         ),
+                       ),
+                        TextField(
+                        decoration: InputDecoration(
+                          hintText: "Landmark(optional)"
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                      
+                ),
               ),
               SizedBox(height: 20,),
-              ElevatedButton(
-                onPressed: (){},
-                 child: Text("Update"))
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: ElevatedButton(
+                  onPressed: (){},
+                   child: Text("Update")),
+              )
             ],
           ),
         ),
