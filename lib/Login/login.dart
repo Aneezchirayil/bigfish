@@ -1,6 +1,9 @@
+import 'package:bigfishaneez/Api/apiclass.dart';
 import 'package:bigfishaneez/Home/home.dart';
 import 'package:bigfishaneez/Login/sign.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:motion_toast/motion_toast.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -10,7 +13,8 @@ class Loginpage extends StatefulWidget {
 }
 
 bool value =false;
-
+final eemail=TextEditingController();
+final ppassword=TextEditingController();
 class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
@@ -51,8 +55,12 @@ class _LoginpageState extends State<Loginpage> {
                   padding: const EdgeInsets.only(left: 15,right: 15),
                   child: Column(
                     children: [
-                      TextField(),
-                      TextField(),
+                      TextField(
+                        controller: eemail,
+                      ),
+                      TextField(
+                        controller: ppassword,
+                      ),
                       Row(mainAxisAlignment: MainAxisAlignment.end,
                         children: [TextButton(onPressed: (){}, child: Text("Forgot Password?"))],
                       ),
@@ -68,6 +76,7 @@ class _LoginpageState extends State<Loginpage> {
                       height: 40,
                         child: ElevatedButton(
                           onPressed: (){
+                            loginUser();
                             Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage(),));
                           },
                            child: Text("Login"),
@@ -102,4 +111,42 @@ class _LoginpageState extends State<Loginpage> {
       ),
     );
   }
+
+void showErrorMessage(String message){
+  MotionToast.error(description: Text(message)).show(context);
+}
+void showSuccessMessage(String message){
+  MotionToast.success(description: Text(message)).show(context);
+}
+
+
+void loginUser()async{
+  final eemail1=eemail.text;
+  final ppassword1=ppassword.text;
+
+  if(eemail1.isEmpty){
+    showErrorMessage("Enter valid email");
+  }else if(ppassword1.isEmpty){
+    showErrorMessage("Enter valid password");
+  }
+  else{
+    final formdata=FormData.fromMap({
+      'email':eemail1,
+      'password':ppassword1,
+      'key':"koFCpCMzm8hhn9ULj0BnUzZkpqM3rg9Mqdii3FwPRjBwZFQWriIJYgB5jjOhNIyasSl4RrmCFLW3tHDRtI39viQbYEP7nEkYvba2wstThYWjvkndZq0zaXJaWjuqeZo8vR3MMHa6OhBDKsFPmWOlIM4H1TgB1fudQndGKzUPg8YhAoaAoCxZ562zjbQdPO73ZkwyPV7iOIkyH11ZLAN42a5dgLH22Rs1VasEWBKdfkqMLPfDbLQpF9Ofqah4fqwc"
+    });
+
+    final result = await Apiclass().loginUserApi(formdata);
+
+    if(result!=null){
+      if(result.status=="success"){
+        showSuccessMessage(result.message!);
+      }else{
+        showErrorMessage(result.message!);
+      }
+    }
+  }
+}
+
+
 }
