@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bigfishaneez/Api/apiclass.dart';
 import 'package:bigfishaneez/Home/home.dart';
 import 'package:bigfishaneez/Login/sign.dart';
@@ -77,7 +79,7 @@ class _LoginpageState extends State<Loginpage> {
                         child: ElevatedButton(
                           onPressed: (){
                             loginUser();
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage(),));
+                           
                           },
                            child: Text("Login"),
                            style: ElevatedButton.styleFrom(
@@ -113,7 +115,9 @@ class _LoginpageState extends State<Loginpage> {
   }
 
 void showErrorMessage(String message){
-  MotionToast.error(description: Text(message)).show(context);
+  MotionToast.error(
+    dismissable: true,
+    description: Text(message)).show(context);
 }
 void showSuccessMessage(String message){
   MotionToast.success(description: Text(message)).show(context);
@@ -141,6 +145,10 @@ void loginUser()async{
     if(result!=null){
       if(result.status=="success"){
         showSuccessMessage(result.message!);
+        Timer(Duration(seconds: 2), () { 
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage(),));
+        });
+         
       }else{
         showErrorMessage(result.message!);
       }

@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:bigfishaneez/Api/logmodel.dart';
-import 'package:bigfishaneez/Api/regmodel.dart';
+import 'package:bigfishaneez/Api/model/homemodel.dart';
+import 'package:bigfishaneez/Api/model/logmodel.dart';
+import 'package:bigfishaneez/Api/model/regmodel.dart';
 import 'package:bigfishaneez/Api/url.dart';
 import 'package:dio/dio.dart';
 
@@ -41,5 +42,18 @@ Future<Login?>loginUserApi(FormData formData)async{
     print(e);
   }
 }
+
+Future<Homemodel?>homeUserApi(FormData formData) async{
+try{
+final result = await dio.post(url.homeEnd,data: formData);
+return Homemodel.fromJson(result.data);
+}on DioException catch(e){
+  print(e);
+
+}catch(e){
+  print(e);
+}
+}
+
 }
 
