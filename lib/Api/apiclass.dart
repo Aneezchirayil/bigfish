@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:bigfishaneez/Api/model/homemodel.dart';
 import 'package:bigfishaneez/Api/model/logmodel.dart';
+import 'package:bigfishaneez/Api/model/productmodel.dart';
 import 'package:bigfishaneez/Api/model/regmodel.dart';
 import 'package:bigfishaneez/Api/url.dart';
 import 'package:dio/dio.dart';
@@ -53,6 +54,18 @@ return Homemodel.fromJson(result.data);
 }catch(e){
   print(e);
 }
+}
+
+
+Future<Productmodel?>produtUserApi(FormData formData)async{
+  try{
+    final result = await dio.post(url.productEnd,data: formData);
+    return Productmodel.fromJson(result.data);
+  }on DioException catch(e){
+    print(e);
+  }catch(e){
+    print(e);
+  }
 }
 
 }

@@ -1,7 +1,10 @@
 
+import 'package:bigfishaneez/Api/apiclass.dart';
+import 'package:bigfishaneez/Api/model/homemodel.dart';
 import 'package:bigfishaneez/Home/Products/product.dart';
 import 'package:bigfishaneez/Home/Screen/categories.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class Homescreen extends StatefulWidget {
@@ -12,8 +15,15 @@ class Homescreen extends StatefulWidget {
 }
 final List<Color> colors =[Colors.pink,Colors.lime,Colors.lightBlue];
 List imag=["assets/images/fp1.jpg","assets/images/fp2.jpg","assets/images/fp3.jpg"];
-var Categories =["freshfish","seerfish","crab","pomfret"];
+var Categories1 =["freshfish","seerfish","crab","pomfret"];
 class _HomescreenState extends State<Homescreen> {
+ValueNotifier<List<Categories>>catelist=ValueNotifier([]);
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    homeUser();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,48 +63,56 @@ class _HomescreenState extends State<Homescreen> {
             ),
             SizedBox(
               height: 360,
-              child: GridView.builder(
-                
-                scrollDirection: Axis.horizontal,
-                gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
-                  mainAxisSpacing: 5,
-                  crossAxisSpacing: 5,
-                crossAxisCount: 2) , 
-                itemCount: Categories.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Productpage(),));
-                    },
-                    child: Container(
-                      // height: 200,
-                      // width: 200,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        boxShadow: [BoxShadow(
-                          color: Colors.black,
-                          
-                        )]
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 100,
-                              child: Image(image: AssetImage("assets/images/ff.jpeg")),
+              child: ValueListenableBuilder(
+                valueListenable: catelist,
+                builder: (context, List<Categories>newcate, child) 
+                  
+                 {
+                  return GridView.builder(
+                    
+                    scrollDirection: Axis.horizontal,
+                    gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
+                      mainAxisSpacing: 5,
+                      crossAxisSpacing: 5,
+                    crossAxisCount: 2) , 
+                    itemCount: newcate.length,
+                  itemBuilder: (context, index) {
+                    final categorie=catelist.value[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => Productpage(),));
+                        },
+                        child: Container(
+                          // height: 200,
+                          // width: 200,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            boxShadow: [BoxShadow(
+                              color: Colors.black,
+                              
+                            )]
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 100,
+                                  child: Image(image: NetworkImage(categorie.image.toString())),
+                                ),
+                                SizedBox(height: 10,),
+                                Text(categorie.name.toString()),
+                              ],
                             ),
-                            SizedBox(height: 10,),
-                            Text(Categories[index]),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                );
-              },),
+                    );
+                  },);
+                }
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(10),
@@ -157,4 +175,22 @@ class _HomescreenState extends State<Homescreen> {
        ),
     );
   }
+
+void homeUser()async{
+  final formdata=FormData.fromMap({
+    "user_id":608,
+    "key":"koFCpCMzm8hhn9ULj0BnUzZkpqM3rg9Mqdii3FwPRjBwZFQWriIJYgB5jjOhNIyasSl4RrmCFLW3tHDRtI39viQbYEP7nEkYvba2wstThYWjvkndZq0zaXJaWjuqeZo8vR3MMHa6OhBDKsFPmWOlIM4H1TgB1fudQndGKzUPg8YhAoaAoCxZ562zjbQdPO73ZkwyPV7iOIkyH11ZLAN42a5dgLH22Rs1VasEWBKdfkqMLPfDbLQpF9Ofqah4fqwc"
+  });
+  final result = await Apiclass().homeUserApi(formdata);
+  if(result != null){
+    if(result.status == "success"){
+      setState(() {
+        catelist.value.clear();
+        catelist.value.addAll(result.data!.categories!);
+      });
+    }
+  }
+}
+
+
 }
