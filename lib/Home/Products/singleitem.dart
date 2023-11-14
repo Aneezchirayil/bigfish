@@ -1,7 +1,9 @@
+import 'package:bigfishaneez/Api/model/productmodel.dart';
 import 'package:flutter/material.dart';
 
 class Singproduct extends StatefulWidget {
-  const Singproduct({super.key});
+  String? index1;
+  Singproduct({super.key,this.index1});
 
   @override
   State<Singproduct> createState() => _SingproductState();
@@ -9,6 +11,7 @@ class Singproduct extends StatefulWidget {
 var cut=[];
 String dpval="select";
 class _SingproductState extends State<Singproduct> {
+  ValueNotifier <List<Data>> single =ValueNotifier([]);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
