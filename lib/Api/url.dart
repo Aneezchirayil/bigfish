@@ -5,4 +5,6 @@ class Url{
   String  homeEnd="completeapi&api_token=";
   String productEnd="completeapi/categoryProducts&api_token=";
   String singlepdEnd="completeapi/getProduct&api_token=";
+  String recipieEnd="completeapi/getRecipes&api_token=";
+  String singlerpEnd="completeapi/recipe&api_token";
 }

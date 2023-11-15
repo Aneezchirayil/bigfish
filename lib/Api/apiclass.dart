@@ -3,7 +3,10 @@ import 'dart:convert';
 import 'package:bigfishaneez/Api/model/homemodel.dart';
 import 'package:bigfishaneez/Api/model/logmodel.dart';
 import 'package:bigfishaneez/Api/model/productmodel.dart';
+import 'package:bigfishaneez/Api/model/recipiemodel.dart';
+import 'package:bigfishaneez/Api/model/recipitemmodal.dart';
 import 'package:bigfishaneez/Api/model/regmodel.dart';
+import 'package:bigfishaneez/Api/model/singitemmodel.dart';
 import 'package:bigfishaneez/Api/url.dart';
 import 'package:dio/dio.dart';
 
@@ -68,5 +71,42 @@ Future<Productmodel?>produtUserApi(FormData formData)async{
   }
 }
 
+
+Future<Singleitem?>sproductUserApi(FormData formData)async{
+  try{
+    final result = await dio.post(url.singlepdEnd,data: formData);
+    print("999999999$result");
+    return Singleitem.fromJson(result.data); 
+  }on DioException catch(e){
+    print(e);
+  }catch(e){
+    print(e);
+  }
+}
+
+
+Future<Recipiemodal?>recipieUserApi(FormData formData)async{
+  try{
+    final result= await dio.post(url.recipieEnd,data: formData);
+    return Recipiemodal.fromJson(result.data);
+  }on DioException catch(e){
+    print(e);
+  }catch(e){
+    print(e);
+  }
+}
+
+
+
+Future<Recipieitem?>srecipieUserApi(FormData formData)async{
+  try{
+    final result= await dio.post(url.singlerpEnd,data: formData);
+    return Recipieitem.fromJson(result.data);
+  }on DioException catch(e){
+    print(e);
+  }catch(e){
+    print(e);
+  }
+}
 }
 
