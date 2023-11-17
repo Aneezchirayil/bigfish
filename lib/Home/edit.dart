@@ -1,4 +1,7 @@
+import 'package:bigfishaneez/Api/apiclass.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:motion_toast/motion_toast.dart';
 
 class Editprofile extends StatefulWidget {
   const Editprofile({super.key});
@@ -6,7 +9,10 @@ class Editprofile extends StatefulWidget {
   @override
   State<Editprofile> createState() => _EditprofileState();
 }
-
+final finame=TextEditingController();
+final laname=TextEditingController();
+final phnum=TextEditingController();
+final emaail=TextEditingController();
 class _EditprofileState extends State<Editprofile> {
   @override
   Widget build(BuildContext context) {
@@ -28,7 +34,7 @@ class _EditprofileState extends State<Editprofile> {
               SizedBox(height: 10,),
               Padding(
                 padding: const EdgeInsets.all(15.0),
-                child: Container(height: 200,
+                child: Container(height: 210,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   boxShadow: [
@@ -42,16 +48,25 @@ class _EditprofileState extends State<Editprofile> {
                   child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       TextField(
+                        controller: finame,
                         decoration: InputDecoration(
-                          hintText: "Name"
+                          hintText: "FirstName"
                         ),
                       ),
                       TextField(
+                        controller: laname,
+                        decoration: InputDecoration(
+                          hintText: "LastName"
+                        ),
+                      ),
+                      TextField(
+                        controller: phnum,
                         decoration: InputDecoration(
                           hintText: "Mobile Number"
                         ),
                       ),
                       TextField(
+                        controller: emaail,
                         decoration: InputDecoration(
                           hintText: "Email"
                         ),
@@ -128,7 +143,9 @@ class _EditprofileState extends State<Editprofile> {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: ElevatedButton(
-                  onPressed: (){},
+                  onPressed: (){
+                    updateUser();
+                  },
                    child: Text("Update")),
               )
             ],
@@ -136,5 +153,53 @@ class _EditprofileState extends State<Editprofile> {
         ),
       ),
     );
+  }
+
+   void showErrorMessage(String message){
+    MotionToast.error(
+      description: Text(message)).show(context);
+  }
+  void showSuccessMessage(String message){
+    MotionToast.success(description: Text(message)).show(context);
+  }
+
+
+
+  void updateUser()async{
+    final fname1=finame.text;
+    final lname1=laname.text;
+    final email1=emaail.text;
+    final phone1=phnum.text;
+   
+
+    if(fname1.isEmpty){
+      showErrorMessage("First name is required");
+    }else if(lname1.isEmpty){
+      showErrorMessage("Last name is required");
+    }else if(email1.isEmpty){
+      showErrorMessage("Email is required");
+    }else if(phone1.isEmpty){
+      showErrorMessage("Phone is required");
+    }
+    else{
+      final formdat=FormData.fromMap({
+        'firstname':fname1,
+        'lastname':lname1,
+        'email':email1,
+        'telephone':phone1,
+        
+      });
+
+      final result= await Apiclass().updateUserApi(formdat);
+
+
+      if(result!=null){
+        if(result.status=="success"){
+          showSuccessMessage(result.message!);
+        }else{
+          showErrorMessage(result.message!);
+        }
+      }
+    }
   }
 }

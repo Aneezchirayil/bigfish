@@ -7,4 +7,5 @@ class Url{
   String singlepdEnd="completeapi/getProduct&api_token=";
   String recipieEnd="completeapi/getRecipes&api_token=";
   String singlerpEnd="completeapi/recipe&api_token";
+  String updateEnd="completeapi/updateProfile&api_token";
 }

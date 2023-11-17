@@ -7,6 +7,7 @@ import 'package:bigfishaneez/Api/model/recipiemodel.dart';
 import 'package:bigfishaneez/Api/model/recipitemmodal.dart';
 import 'package:bigfishaneez/Api/model/regmodel.dart';
 import 'package:bigfishaneez/Api/model/singitemmodel.dart';
+import 'package:bigfishaneez/Api/model/updatemodel.dart';
 import 'package:bigfishaneez/Api/url.dart';
 import 'package:dio/dio.dart';
 
@@ -102,6 +103,19 @@ Future<Recipieitem?>srecipieUserApi(FormData formData)async{
   try{
     final result= await dio.post(url.singlerpEnd,data: formData);
     return Recipieitem.fromJson(result.data);
+  }on DioException catch(e){
+    print(e);
+  }catch(e){
+    print(e);
+  }
+}
+
+
+
+Future<Updatemodal?>updateUserApi(FormData formData)async{
+  try{
+    final result =await dio.post(url.updateEnd,data: formData);
+    return Updatemodal.fromJson(result.data);
   }on DioException catch(e){
     print(e);
   }catch(e){

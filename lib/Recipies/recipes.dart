@@ -52,7 +52,7 @@ class _RecipespageState extends State<Recipespage> {
                                 child:
                                  InkWell(
                                   onTap: () {
-                                 //   Navigator.push(context, MaterialPageRoute(builder: (context) => Itemrecipe(index2: recipiee.id,),));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => Itemrecipe(index2: recipiee.id,),));
                                   },
                                    child: Container(
                                     decoration: BoxDecoration(
