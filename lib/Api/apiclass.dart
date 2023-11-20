@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bigfishaneez/Api/model/homemodel.dart';
+import 'package:bigfishaneez/Api/model/last.dart';
 import 'package:bigfishaneez/Api/model/logmodel.dart';
 import 'package:bigfishaneez/Api/model/productmodel.dart';
 import 'package:bigfishaneez/Api/model/recipiemodel.dart';
@@ -122,5 +123,15 @@ Future<Updatemodal?>updateUserApi(FormData formData)async{
     print(e);
   }
 }
+
+Future<Aboutmodal?>aboutUserApi(FormData formData)async{
+  try{
+    final result = await dio.post(url.aboutEnd,data: formData);
+    return Aboutmodal.fromJson(result.data);
+  }on DioException catch(e){
+    print(e);
+  }
+}
+
 }
 

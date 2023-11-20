@@ -8,4 +8,5 @@ class Url{
   String recipieEnd="completeapi/getRecipes&api_token=";
   String singlerpEnd="completeapi/recipe&api_token";
   String updateEnd="completeapi/updateProfile&api_token";
+  String aboutEnd="completeapi/aboutUs&api_token";
 }

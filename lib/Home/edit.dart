@@ -15,6 +15,12 @@ final phnum=TextEditingController();
 final emaail=TextEditingController();
 class _EditprofileState extends State<Editprofile> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -166,17 +172,18 @@ class _EditprofileState extends State<Editprofile> {
 
 
   void updateUser()async{
-    final fname1=finame.text;
-    final lname1=laname.text;
-    final email1=emaail.text;
-    final phone1=phnum.text;
+    // final fname1=finame.text;
+    // final lname1=laname.text;
+    // final email1=emaail.text;
+    // final phone1=phnum.text;
    
 
      final formdat=FormData.fromMap({
-        'firstname':fname1,
-        'lastname':lname1,
-        'email':email1,
-        'telephone':phone1,
+        'user_id':608,
+        'firstname':finame,
+        'lastname':laname,
+        'email':emaail,
+        'telephone':phnum,
         'key':"koFCpCMzm8hhn9ULj0BnUzZkpqM3rg9Mqdii3FwPRjBwZFQWriIJYgB5jjOhNIyasSl4RrmCFLW3tHDRtI39viQbYEP7nEkYvba2wstThYWjvkndZq0zaXJaWjuqeZo8vR3MMHa6OhBDKsFPmWOlIM4H1TgB1fudQndGKzUPg8YhAoaAoCxZ562zjbQdPO73ZkwyPV7iOIkyH11ZLAN42a5dgLH22Rs1VasEWBKdfkqMLPfDbLQpF9Ofqah4fqwc"
         
       });
