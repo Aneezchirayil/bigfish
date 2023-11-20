@@ -172,23 +172,15 @@ class _EditprofileState extends State<Editprofile> {
     final phone1=phnum.text;
    
 
-    if(fname1.isEmpty){
-      showErrorMessage("First name is required");
-    }else if(lname1.isEmpty){
-      showErrorMessage("Last name is required");
-    }else if(email1.isEmpty){
-      showErrorMessage("Email is required");
-    }else if(phone1.isEmpty){
-      showErrorMessage("Phone is required");
-    }
-    else{
-      final formdat=FormData.fromMap({
+     final formdat=FormData.fromMap({
         'firstname':fname1,
         'lastname':lname1,
         'email':email1,
         'telephone':phone1,
+        'key':"koFCpCMzm8hhn9ULj0BnUzZkpqM3rg9Mqdii3FwPRjBwZFQWriIJYgB5jjOhNIyasSl4RrmCFLW3tHDRtI39viQbYEP7nEkYvba2wstThYWjvkndZq0zaXJaWjuqeZo8vR3MMHa6OhBDKsFPmWOlIM4H1TgB1fudQndGKzUPg8YhAoaAoCxZ562zjbQdPO73ZkwyPV7iOIkyH11ZLAN42a5dgLH22Rs1VasEWBKdfkqMLPfDbLQpF9Ofqah4fqwc"
         
       });
+     
 
       final result= await Apiclass().updateUserApi(formdat);
 
@@ -200,6 +192,6 @@ class _EditprofileState extends State<Editprofile> {
           showErrorMessage(result.message!);
         }
       }
-    }
+    
   }
 }
