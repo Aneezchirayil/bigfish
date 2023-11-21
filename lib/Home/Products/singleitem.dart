@@ -15,6 +15,8 @@ var cut = [];
 String dpval = "select";
 
 class _SingproductState extends State<Singproduct> {
+  int a=2;
+  int b=100;
   String? name;
   String? pdtprice;
   String? disprice;
@@ -161,16 +163,32 @@ class _SingproductState extends State<Singproduct> {
                     children: [
                       Row(
                         children: [
-                          IconButton(onPressed: () {}, icon: Icon(Icons.add)),
-                          Text("2"),
-                          IconButton(onPressed: () {}, icon: Icon(Icons.remove))
+                          IconButton(onPressed: () {
+                            setState(() {
+                              a=a+1;
+                            });
+                          }, icon: Icon(Icons.add)),
+                          Text("$a"),
+                          IconButton(onPressed: () {
+                            setState(() {
+                              a=a-1;
+                            });
+                          }, icon: Icon(Icons.remove))
                         ],
                       ),
                       Row(
                         children: [
-                          IconButton(onPressed: () {}, icon: Icon(Icons.add)),
-                          Text("100"),
-                          IconButton(onPressed: () {}, icon: Icon(Icons.remove))
+                          IconButton(onPressed: () {
+                            setState(() {
+                              b=b+1;
+                            });
+                          }, icon: Icon(Icons.add)),
+                          Text("$b"),
+                          IconButton(onPressed: () {
+                            setState(() {
+                              b=b-1;
+                            });
+                          }, icon: Icon(Icons.remove))
                         ],
                       ),
                     ],
@@ -280,7 +298,7 @@ class _SingproductState extends State<Singproduct> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(itdes.toString())
+                  Text(name.toString())
                 ],
               ),
             ),
@@ -429,7 +447,7 @@ class _SingproductState extends State<Singproduct> {
           reqqunty=result.data.requiredQuantity;
           avaqunty=result.data.availableQuantity;
           weigt=result.data.weight;
-          imag=result.data.images.toString();
+          imag=result.data.images[0];
           itdes=result.data.description;
           whprice==result.data.wholePrice;
         });

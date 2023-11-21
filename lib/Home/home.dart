@@ -1,3 +1,4 @@
+import 'package:bigfishaneez/Home/Screen/cart.dart';
 import 'package:bigfishaneez/Home/Screen/categories.dart';
 import 'package:bigfishaneez/Home/Screen/homepage.dart';
 import 'package:bigfishaneez/Home/Screen/settings.dart';
@@ -106,7 +107,9 @@ class _HomepageState extends State<Homepage> {
       toolbarHeight: 80,
         actions: [
           IconButton(onPressed: (){}, icon: Icon(Icons.notifications)),
-          IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart))
+          IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Cartpage(),));
+          }, icon: Icon(Icons.shopping_cart))
         ],
         title: Center(child: CircleAvatar(
           radius: 35,
@@ -141,7 +144,7 @@ class _HomepageState extends State<Homepage> {
        bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.shifting,
         currentIndex: indexnum,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Colors.white,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
