@@ -4,6 +4,7 @@ import 'package:bigfishaneez/Home/Screen/homepage.dart';
 import 'package:bigfishaneez/Home/Screen/settings.dart';
 import 'package:bigfishaneez/Home/about.dart';
 import 'package:bigfishaneez/Home/edit.dart';
+import 'package:bigfishaneez/Home/refer.dart';
 import 'package:bigfishaneez/Login/login.dart';
 
 import 'package:bigfishaneez/Recipies/recipes.dart';
@@ -67,7 +68,9 @@ class _HomepageState extends State<Homepage> {
               ListTile(
                 leading: Icon(Icons.local_library),
                 title: Text("Refer & Earn"),
-                onTap: (){},
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Referpage(),));
+                },
               ),
               ListTile(
                 leading: Icon(Icons.edit),
@@ -144,20 +147,24 @@ class _HomepageState extends State<Homepage> {
        bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.shifting,
         currentIndex: indexnum,
-        selectedItemColor: Colors.white,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",
-            backgroundColor: Colors.black),
+           // backgroundColor: Colors.black
+            ),
             BottomNavigationBarItem(
               icon: Icon(Icons.category),
               label: "Categories",
-              backgroundColor: Colors.black),
+             // backgroundColor: Colors.black
+              ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
               label: "Settings",
-              backgroundColor: Colors.black)
+             // backgroundColor: Colors.black
+              )
         ],
         onTap: (value) {
           setState(() {

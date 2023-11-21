@@ -13,6 +13,8 @@ class Seafishpage extends StatefulWidget {
 }
 
 class _SeafishpageState extends State<Seafishpage> {
+  var gvalue="";
+  var value=[];
   ValueNotifier<List<Data>> product = ValueNotifier([]);
   @override
   void initState() {
@@ -105,7 +107,37 @@ class _SeafishpageState extends State<Seafishpage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    showModalBottomSheet(context: context, builder: (context) {
+                      return Container(
+                        height: 200,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 50,
+                              child: Center(child: Text("Sort By",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15),))),
+                            Divider(),
+                            ListTile(
+                              title: Text("Price - Low to High"),
+                              trailing: Radio(value: value, groupValue: gvalue, onChanged: (newval){
+                                setState(() {
+                                  gvalue=newval.toString();
+                                });
+                              }),
+                            ),
+                            ListTile(
+                              title: Text("Price - High to Low"),
+                              trailing: Radio(value: value, groupValue: gvalue, onChanged: (newval){
+                                setState(() {
+                                  gvalue=newval.toString();
+                                });
+                              }),
+                            ),
+                          ],
+                        ),
+                      );
+                    },);
+                  },
                   child: Container(
                     child: Row(
                       children: [Icon(Icons.sort), Text("SORT")],

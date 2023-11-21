@@ -38,6 +38,7 @@ dependencies:
   carousel_slider: ^4.2.1
   dio: ^5.3.3
   motion_toast: ^2.7.9
+  dotted_border: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +76,9 @@ flutter:
     - assets/images/fp1.jpg
     - assets/images/fp2.jpg
     - assets/images/fp3.jpg
+    - assets/images/refer-n-earn.png
+    - assets/images/gmail.png
+    - assets/images/whatsapp.png
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

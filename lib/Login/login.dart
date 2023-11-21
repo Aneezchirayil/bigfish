@@ -54,7 +54,7 @@ class _LoginpageState extends State<Loginpage> {
                   )]
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 15,right: 15),
+                  padding: const EdgeInsets.only(left: 15,right: 15,top: 20),
                   child: Column(
                     children: [
                       TextField(

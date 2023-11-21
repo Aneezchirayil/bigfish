@@ -1,6 +1,6 @@
 import 'package:bigfishaneez/Api/apiclass.dart';
 import 'package:bigfishaneez/Api/model/homemodel.dart';
-import 'package:bigfishaneez/Home/Products/product.dart';
+
 import 'package:bigfishaneez/Home/Products/seafish.dart';
 import 'package:bigfishaneez/Home/Screen/categories.dart';
 import 'package:carousel_slider/carousel_slider.dart';
