@@ -3,6 +3,7 @@ import 'package:bigfishaneez/Home/Screen/categories.dart';
 import 'package:bigfishaneez/Home/Screen/homepage.dart';
 import 'package:bigfishaneez/Home/Screen/settings.dart';
 import 'package:bigfishaneez/Home/about.dart';
+import 'package:bigfishaneez/Home/contact.dart';
 import 'package:bigfishaneez/Home/edit.dart';
 import 'package:bigfishaneez/Home/refer.dart';
 import 'package:bigfishaneez/Login/login.dart';
@@ -101,7 +102,9 @@ class _HomepageState extends State<Homepage> {
               ListTile(
                 leading: Icon(Icons.call),
                 title: Text("Contact"),
-                onTap: (){},
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Contactpage(),));
+                },
               ),
           ],
         ),

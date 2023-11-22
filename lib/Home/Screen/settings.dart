@@ -1,3 +1,7 @@
+import 'package:bigfishaneez/Home/about.dart';
+import 'package:bigfishaneez/Home/contact.dart';
+import 'package:bigfishaneez/Home/refer.dart';
+import 'package:bigfishaneez/Login/login.dart';
 import 'package:flutter/material.dart';
 
 class Settingpage extends StatefulWidget {
@@ -80,7 +84,9 @@ class _SettingpageState extends State<Settingpage> {
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                   Text("Refer & Earn",style: TextStyle(fontWeight: FontWeight.bold),),
-                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios,size: 10,color: Colors.grey,))
+                  IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Referpage(),));
+                  }, icon: Icon(Icons.arrow_forward_ios,size: 10,color: Colors.grey,))
                 ],),
               ),
             ),SizedBox(height: 8,),
@@ -97,7 +103,9 @@ class _SettingpageState extends State<Settingpage> {
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                   Text("About Us",style: TextStyle(fontWeight: FontWeight.bold),),
-                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios,size: 10,color: Colors.grey,))
+                  IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Aboutpage(),));
+                  }, icon: Icon(Icons.arrow_forward_ios,size: 10,color: Colors.grey,))
                 ],),
               ),
             ),SizedBox(height: 8,),
@@ -148,11 +156,15 @@ class _SettingpageState extends State<Settingpage> {
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                   Text("Contact Us",style: TextStyle(fontWeight: FontWeight.bold),),
-                  IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios,size: 10,color: Colors.grey,))
+                  IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Contactpage(),));
+                  }, icon: Icon(Icons.arrow_forward_ios,size: 10,color: Colors.grey,))
                 ],),
               ),
             ),SizedBox(height: 15,),
-            ElevatedButton(onPressed: (){}, child: Text("Logout"))
+            ElevatedButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Loginpage(),));
+            }, child: Text("Logout"))
           ],
         ),
       )

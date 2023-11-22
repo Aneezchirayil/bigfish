@@ -146,7 +146,50 @@ class _SeafishpageState extends State<Seafishpage> {
                 ),
                 Divider(),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    showModalBottomSheet(context: context, builder: (context) {
+                      return Container(
+                        height:200 ,
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10,right: 10),
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("Filter",style: TextStyle(fontWeight: FontWeight.bold),),
+                                  TextButton(onPressed: (){
+                                    Navigator.pop(context);
+                                  }, child:Text("Done",style: TextStyle(fontWeight: FontWeight.bold),))
+                                ],
+                              ),
+                            ),
+                            Divider(),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10,right: 10,top: 10),
+                              child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    children: [
+                                      Text("Min Price",style: TextStyle(color: Colors.grey,fontSize: 10),),
+                                      SizedBox(height: 5,),
+                                      Text("Rs 100",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),)
+                                    ],
+                                  ),
+                                   Column(
+                                    children: [
+                                      Text("Max Price",style: TextStyle(color: Colors.grey,fontSize: 10),),
+                                       SizedBox(height: 5,),
+                                      Text("Rs 2000",style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),)
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    },);
+                  },
                   child: Container(
                     child: Row(
                       children: [Icon(Icons.sort), Text("FILTER")],
