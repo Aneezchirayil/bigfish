@@ -1,5 +1,5 @@
 import 'package:bigfishaneez/Api/apiclass.dart';
-import 'package:bigfishaneez/Api/model/productmodel.dart';
+
 import 'package:bigfishaneez/Home/Screen/homepage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -113,7 +113,7 @@ class _SingproductState extends State<Singproduct> {
             height: 20,
           ),
           Container(
-            height: 150,
+            height: 180,
             decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [BoxShadow(color: Colors.black)]),
@@ -203,7 +203,7 @@ class _SingproductState extends State<Singproduct> {
             height: 20,
           ),
           Container(
-            height: 220,
+            height: 240,
             decoration: BoxDecoration(
                 color: Colors.white,
                 boxShadow: [BoxShadow(color: Colors.black)]),
@@ -320,8 +320,11 @@ class _SingproductState extends State<Singproduct> {
             child: SizedBox(
               height: 360,
               child: GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, mainAxisSpacing: 5, crossAxisSpacing: 5),
+                    crossAxisCount: 2, mainAxisSpacing: 5, 
+                    mainAxisExtent: 180,
+                    crossAxisSpacing: 5),
                 itemCount: 4,
                 itemBuilder: (context, index) {
                   return Padding(

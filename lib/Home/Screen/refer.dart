@@ -28,13 +28,13 @@ class _ReferpageState extends State<Referpage> {
             Text("Get Rs 100 when your friend completes"),
             Text("his/her first purchase with us"),
             SizedBox(height: 20,),
-            Text("Your Code"),
+            Text("Your Code",style: TextStyle(fontWeight: FontWeight.bold)),
             SizedBox(height: 20,),
             Row(mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("HFDB5567"),
                 SizedBox(width: 5,),
-                Icon(Icons.content_copy,size: 15,)
+                Icon(Icons.content_copy,size: 15,color: Colors.grey,)
               ],
             ),
             SizedBox(height: 20,),
@@ -42,11 +42,11 @@ class _ReferpageState extends State<Referpage> {
               strokeWidth: 1,
               color: Colors.black,
               child: Container(
-                height: 100,
+                height: 120,
                 width: 250,
                 child: Column(
                   children: [
-                    Text("Your link"),
+                    Text("Your link",style: TextStyle(fontWeight: FontWeight.bold),),
                     SizedBox(height: 10,),
                     Text("http://www.healthfish.com/hfdb5567-e5",style: TextStyle(color: Colors.blue),),
                     SizedBox(height: 10,),

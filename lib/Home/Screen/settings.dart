@@ -1,6 +1,6 @@
-import 'package:bigfishaneez/Home/about.dart';
-import 'package:bigfishaneez/Home/contact.dart';
-import 'package:bigfishaneez/Home/refer.dart';
+import 'package:bigfishaneez/Home/Screen/about.dart';
+import 'package:bigfishaneez/Home/Screen/contact.dart';
+import 'package:bigfishaneez/Home/Screen/refer.dart';
 import 'package:bigfishaneez/Login/login.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,7 @@ class _SettingpageState extends State<Settingpage> {
      // backgroundColor: Colors.white70,
       body:Padding(
         padding: const EdgeInsets.all(15),
-        child: Column(
+        child: ListView(
           children: [
             Container(
               height: 50,
@@ -161,10 +161,22 @@ class _SettingpageState extends State<Settingpage> {
                   }, icon: Icon(Icons.arrow_forward_ios,size: 10,color: Colors.grey,))
                 ],),
               ),
-            ),SizedBox(height: 15,),
+            ),SizedBox(height: 15,
+            width: double.infinity,),
             ElevatedButton(onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Loginpage(),));
-            }, child: Text("Logout"))
+             showDialog(context: context, builder: (context)=>AlertDialog(
+              title: Text("Logout",style: TextStyle(fontWeight: FontWeight.bold)),
+              content: Text("Do you want to Logout?",style: TextStyle(fontWeight: FontWeight.bold),),
+              actions: [
+                TextButton(onPressed: (){
+                  Navigator.pop(context);
+                }, child: Text("NO")),
+                TextButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Loginpage(),));
+                }, child: Text("YES"))
+              ],
+             ));
+            }, child: Text("Logout",style: TextStyle(color: Colors.white),),style: ElevatedButton.styleFrom(backgroundColor: Colors.grey),)
           ],
         ),
       )

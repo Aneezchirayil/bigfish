@@ -1,16 +1,19 @@
+import 'dart:io';
+
 import 'package:bigfishaneez/Home/Screen/cart.dart';
 import 'package:bigfishaneez/Home/Screen/categories.dart';
 import 'package:bigfishaneez/Home/Screen/homepage.dart';
 import 'package:bigfishaneez/Home/Screen/settings.dart';
-import 'package:bigfishaneez/Home/about.dart';
-import 'package:bigfishaneez/Home/contact.dart';
-import 'package:bigfishaneez/Home/edit.dart';
-import 'package:bigfishaneez/Home/refer.dart';
+import 'package:bigfishaneez/Home/Screen/about.dart';
+import 'package:bigfishaneez/Home/Screen/contact.dart';
+import 'package:bigfishaneez/Home/Screen/edit.dart';
+import 'package:bigfishaneez/Home/Screen/refer.dart';
 import 'package:bigfishaneez/Login/login.dart';
 
-import 'package:bigfishaneez/Recipies/recipes.dart';
+import 'package:bigfishaneez/Home/Screen/Recipies/recipes.dart';
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 class Homepage extends StatefulWidget {
@@ -24,6 +27,50 @@ var indexnum=0;
 List screen=[Homescreen(),Categoriespage(),Settingpage()];
 
 class _HomepageState extends State<Homepage> {
+  File? _profileImage;
+
+  Future<void> _pickProfileImage() async {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              ListTile(
+                leading: Icon(Icons.photo),
+                title: Text('Choose from Gallery'),
+                onTap: () {
+                  _getImage(ImageSource.gallery);
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.camera),
+                title: Text('Take a Photo'),
+                onTap: () {
+                  _getImage(ImageSource.camera);
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _getImage(ImageSource source) async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: source);
+
+    if (pickedFile != null) {
+      setState(() {
+        _profileImage = File(pickedFile.path);
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,9 +88,26 @@ class _HomepageState extends State<Homepage> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 10,bottom: 10),
-                    child: CircleAvatar(
-                      backgroundImage: AssetImage("assets/images/person.png"),
-                      radius: 40,
+                    child: Stack(
+                      alignment: Alignment.bottomCenter,
+                      children: [
+                        GestureDetector(
+                          child:
+                          _profileImage == null ?
+                           CircleAvatar(
+                            backgroundImage: AssetImage("assets/images/person.png"),
+                            radius: 45,
+                          ):
+                          CircleAvatar(
+                            backgroundImage: FileImage(_profileImage!),
+                            radius: 45,
+                          )
+                        ),
+                        Positioned(
+                          top:60 ,
+                          right: 0,
+                          child: IconButton(onPressed: _pickProfileImage, icon: Icon(Icons.add_a_photo,size: 15,)))
+                      ],
                     ),
                   ),
                   Text("Welcome to Healthy Fish",style: TextStyle(

@@ -26,7 +26,7 @@ class _LoginpageState extends State<Loginpage> {
         child: Stack(
           children: [
             Column(children: [
-              Expanded(flex: 3,
+              Expanded(flex: 4,
                 child: Container(
                   height: double.infinity,
                   width: double.infinity,
@@ -36,15 +36,17 @@ class _LoginpageState extends State<Loginpage> {
                 ),
               ),
               Expanded(
-                flex: 4,
+                flex: 5,
                 child: Container(decoration: BoxDecoration(
                   color: Colors.white),),
               )
             ],),
-            Positioned(left: 40,
-              bottom: 80,
+            Align(alignment: Alignment.bottomCenter,
+            
+              //left: 40,
+             // bottom: 80,
               child: Container(
-                height: 420,
+                height: 480,
                 width: 280,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -56,8 +58,8 @@ class _LoginpageState extends State<Loginpage> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(left: 15,right: 15,),
-                  child: ListView(
-                    physics: NeverScrollableScrollPhysics(),
+                  child: Column(
+                  //  physics: NeverScrollableScrollPhysics(),
                     children: [
                       TextField(
                         controller: eemail,
@@ -83,8 +85,9 @@ class _LoginpageState extends State<Loginpage> {
                             loginUser();
                            
                           },
-                           child: Text("Login"),
+                           child: Text("Login",style: TextStyle(color: Colors.white),),
                            style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.indigo,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25)
                             )

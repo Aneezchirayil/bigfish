@@ -1,8 +1,8 @@
 import 'package:bigfishaneez/Api/apiclass.dart';
 import 'package:bigfishaneez/Api/model/homemodel.dart';
-import 'package:bigfishaneez/Home/Products/product.dart';
 
-import 'package:bigfishaneez/Home/Products/seafish.dart';
+
+import 'package:bigfishaneez/Home/Screen/Products/seafish.dart';
 import 'package:bigfishaneez/Home/Screen/categories.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dio/dio.dart';
@@ -156,8 +156,11 @@ class _HomescreenState extends State<Homescreen> {
           SizedBox(
             height: 360,
             child: GridView.builder(
+              physics: NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, mainAxisSpacing: 5, crossAxisSpacing: 5),
+                  crossAxisCount: 2, mainAxisSpacing: 5, 
+                  mainAxisExtent: 180,
+                  crossAxisSpacing: 5),
               itemCount: 4,
               itemBuilder: (context, index) {
                 return Padding(

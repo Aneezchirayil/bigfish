@@ -1,6 +1,6 @@
 import 'package:bigfishaneez/Api/apiclass.dart';
 import 'package:bigfishaneez/Api/model/productmodel.dart';
-import 'package:bigfishaneez/Home/Products/singleitem.dart';
+import 'package:bigfishaneez/Home/Screen/Products/singleitem.dart';
 import 'package:bigfishaneez/Home/Screen/homepage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +15,8 @@ class Seafishpage extends StatefulWidget {
 }
 
 class _SeafishpageState extends State<Seafishpage> {
+  double start = 500; 
+  double end = 1500; 
   var gvalue="";
   var value=[];
   ValueNotifier<List<Data>> product = ValueNotifier([]);
@@ -41,6 +43,7 @@ class _SeafishpageState extends State<Seafishpage> {
                 valueListenable: product,
                 builder: (context, List<Data> newpd, child) {
                   return GridView.builder(
+                    physics: NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 10,
@@ -163,7 +166,7 @@ class _SeafishpageState extends State<Seafishpage> {
                               padding: const EdgeInsets.only(left: 10,right: 10),
                               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("Filter",style: TextStyle(fontWeight: FontWeight.bold),),
+                                  Text("Filter",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
                                   TextButton(onPressed: (){
                                     Navigator.pop(context);
                                   }, child:Text("Done",style: TextStyle(fontWeight: FontWeight.bold),))
@@ -191,7 +194,18 @@ class _SeafishpageState extends State<Seafishpage> {
                                   ),
                                 ],
                               ),
-                            )
+                            ),
+                            RangeSlider(
+                              min: 100,
+                              max: 2000,
+                              activeColor: Colors.indigo,
+                              inactiveColor: Colors.grey,
+                              values:RangeValues(start,end), onChanged: (value){
+                              setState(() {
+                                start=value.start;
+                                end=value.end;
+                              });
+                            })
                           ],
                         ),
                       );

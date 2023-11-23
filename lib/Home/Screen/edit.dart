@@ -154,7 +154,7 @@ class _EditprofileState extends State<Editprofile> {
                   onPressed: (){
                     updateUser();
                   },
-                   child: Text("Update")),
+                   child: Text("Update",style: TextStyle(color: Colors.white),),style: ElevatedButton.styleFrom(backgroundColor: Colors.black),),
               )
             ],
           ),

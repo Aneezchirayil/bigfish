@@ -16,10 +16,11 @@ class _CartpageState extends State<Cartpage> {
         backgroundColor: Colors.black,
         title: Text("My Cart",style: TextStyle(color: Colors.white)),
       ),
-      body: Column(
+      body: ListView(
         children: [
-          SizedBox(height: 300,
+          SizedBox(height: 480,
             child: ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
               itemCount: 2,
               itemBuilder: (context, index) {
               return Padding(
@@ -45,7 +46,7 @@ class _CartpageState extends State<Cartpage> {
                     ),
                     Column(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ElevatedButton(onPressed: (){}, child: Text("Remove"),style: ElevatedButton.styleFrom(backgroundColor: Colors.grey)),
+                        ElevatedButton(onPressed: (){}, child: Text("Remove",style: TextStyle(color: Colors.black),),style: ElevatedButton.styleFrom(backgroundColor: Colors.grey)),
                          SizedBox(height: 5,),
                         Text("Qty : 2.25 kg")
                       ],
@@ -56,7 +57,7 @@ class _CartpageState extends State<Cartpage> {
               );
             },),
           ),
-          Spacer(),
+          //Spacer(),
           Container(
             width: double.infinity,
             decoration: BoxDecoration(color: Colors.white),

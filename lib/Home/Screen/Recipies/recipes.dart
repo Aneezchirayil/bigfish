@@ -1,7 +1,7 @@
 import 'package:bigfishaneez/Api/apiclass.dart';
 import 'package:bigfishaneez/Api/model/recipiemodel.dart';
 import 'package:bigfishaneez/Home/Screen/homepage.dart';
-import 'package:bigfishaneez/Recipies/recipieitem.dart';
+import 'package:bigfishaneez/Home/Screen/Recipies/recipieitem.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -41,10 +41,11 @@ class _RecipespageState extends State<Recipespage> {
                         
                        {
                         return GridView.builder(
+                          physics: NeverScrollableScrollPhysics(),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             mainAxisSpacing: 5,
-                            mainAxisExtent: 200,
+                            mainAxisExtent: 210,
                             crossAxisSpacing: 5), 
                             itemCount: newrecpie.length,
                             itemBuilder: (context, index) {

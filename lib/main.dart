@@ -13,6 +13,7 @@ class Myapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Flashlogo(),
+      debugShowCheckedModeBanner: false,
      // theme: ThemeData(primarySwatch: Colors.white),
     );
   }

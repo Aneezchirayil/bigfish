@@ -2,7 +2,7 @@
 
 import 'package:bigfishaneez/Api/apiclass.dart';
 import 'package:bigfishaneez/Api/model/homemodel.dart';
-import 'package:bigfishaneez/Home/Products/seafish.dart';
+import 'package:bigfishaneez/Home/Screen/Products/seafish.dart';
 import 'package:bigfishaneez/Home/Screen/homepage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -51,6 +51,7 @@ class _CategoriespageState extends State<Categoriespage> {
                                 MaterialPageRoute(
                                   builder: (context) => Seafishpage(
                                     index: categorie.categoryId,
+                                    pdname: categorie.name,
                                   ),
                                 ));
                           },
