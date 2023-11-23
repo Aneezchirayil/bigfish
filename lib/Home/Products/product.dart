@@ -2,7 +2,8 @@ import 'package:bigfishaneez/Home/Products/seafish.dart';
 import 'package:flutter/material.dart';
 
 class Productpage extends StatefulWidget {
-  const Productpage({super.key});
+  String? index;
+ Productpage({super.key,this.index});
 
   @override
   State<Productpage> createState() => _ProductpageState();
@@ -15,7 +16,8 @@ class _ProductpageState extends State<Productpage> {
      child: Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: Text("Fresh Fish"),
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text("Fresh Fish",style: TextStyle(color: Colors.white)),
         bottom: TabBar(
           tabs: [
             Tab(text: "SEA FISH",),

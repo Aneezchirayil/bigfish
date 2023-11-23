@@ -13,7 +13,7 @@ class Myapp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Flashlogo(),
-      theme: ThemeData(primarySwatch: Colors.indigo),
+     // theme: ThemeData(primarySwatch: Colors.white),
     );
   }
 }

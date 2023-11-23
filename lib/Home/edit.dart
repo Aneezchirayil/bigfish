@@ -1,4 +1,5 @@
 import 'package:bigfishaneez/Api/apiclass.dart';
+import 'package:bigfishaneez/Home/Screen/homepage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
@@ -24,8 +25,9 @@ class _EditprofileState extends State<Editprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Colors.black,
-        title: Text("Edit Profile"),
+        title: Text("Edit Profile",style: TextStyle(color: Colors.white)),
       ),
       body: Container(
         height: double.infinity,
@@ -179,7 +181,7 @@ class _EditprofileState extends State<Editprofile> {
    
 
      final formdat=FormData.fromMap({
-        'user_id':608,
+        'user_id':vaal,
         'firstname':finame,
         'lastname':laname,
         'email':emaail,

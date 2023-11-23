@@ -22,8 +22,9 @@ class _AboutpageState extends State<Aboutpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Colors.black,
-        title: Text("About Company"),
+        title: Text("About Company",style: TextStyle(color: Colors.white)),
       ),
       body:Padding(
         padding: const EdgeInsets.only(top: 25,left: 25,right: 25),

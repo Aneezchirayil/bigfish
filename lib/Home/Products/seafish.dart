@@ -1,12 +1,14 @@
 import 'package:bigfishaneez/Api/apiclass.dart';
 import 'package:bigfishaneez/Api/model/productmodel.dart';
 import 'package:bigfishaneez/Home/Products/singleitem.dart';
+import 'package:bigfishaneez/Home/Screen/homepage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 class Seafishpage extends StatefulWidget {
   String? index;
-  Seafishpage({super.key, this.index});
+  String? pdname;
+  Seafishpage({super.key, this.index,this.pdname});
 
   @override
   State<Seafishpage> createState() => _SeafishpageState();
@@ -26,6 +28,11 @@ class _SeafishpageState extends State<Seafishpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text(widget.pdname.toString(),style: TextStyle(color: Colors.white),),
+      ),
       body: Column(
         children: [
           SizedBox(
@@ -206,7 +213,7 @@ class _SeafishpageState extends State<Seafishpage> {
 
   void productUser() async {
     final formdata = FormData.fromMap({
-      "user_id": 608,
+      "user_id": vaal,
       "category_id": widget.index,
       "key":
           "koFCpCMzm8hhn9ULj0BnUzZkpqM3rg9Mqdii3FwPRjBwZFQWriIJYgB5jjOhNIyasSl4RrmCFLW3tHDRtI39viQbYEP7nEkYvba2wstThYWjvkndZq0zaXJaWjuqeZo8vR3MMHa6OhBDKsFPmWOlIM4H1TgB1fudQndGKzUPg8YhAoaAoCxZ562zjbQdPO73ZkwyPV7iOIkyH11ZLAN42a5dgLH22Rs1VasEWBKdfkqMLPfDbLQpF9Ofqah4fqwc",

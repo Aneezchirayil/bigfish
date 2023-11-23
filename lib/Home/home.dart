@@ -28,6 +28,7 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
+        
         child: ListView(
           children: [
             DrawerHeader(
@@ -110,12 +111,13 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
       appBar: AppBar(backgroundColor: Colors.black,
+      iconTheme: IconThemeData(color: Colors.white),
       toolbarHeight: 80,
         actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.notifications)),
+          IconButton(onPressed: (){}, icon: Icon(Icons.notifications,color: Colors.white,)),
           IconButton(onPressed: (){
             Navigator.push(context, MaterialPageRoute(builder: (context) => Cartpage(),));
-          }, icon: Icon(Icons.shopping_cart))
+          }, icon: Icon(Icons.shopping_cart),color: Colors.white,)
         ],
         title: Center(child: CircleAvatar(
           radius: 35,

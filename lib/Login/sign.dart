@@ -19,7 +19,9 @@ class _SignpageState extends State<Signpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign Up"),
+        backgroundColor: Colors.black,
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text("Sign Up",style: TextStyle(color: Colors.white),),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 10,left:10,right: 10),

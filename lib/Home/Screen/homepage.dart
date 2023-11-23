@@ -1,11 +1,13 @@
 import 'package:bigfishaneez/Api/apiclass.dart';
 import 'package:bigfishaneez/Api/model/homemodel.dart';
+import 'package:bigfishaneez/Home/Products/product.dart';
 
 import 'package:bigfishaneez/Home/Products/seafish.dart';
 import 'package:bigfishaneez/Home/Screen/categories.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Homescreen extends StatefulWidget {
   const Homescreen({super.key});
@@ -13,7 +15,7 @@ class Homescreen extends StatefulWidget {
   @override
   State<Homescreen> createState() => _HomescreenState();
 }
-
+var vaal;
 final List<Color> colors = [Colors.pink, Colors.lime, Colors.lightBlue];
 List imag = [
   "assets/images/fp1.jpg",
@@ -99,8 +101,9 @@ class _HomescreenState extends State<Homescreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Seafishpage(
+                                  builder: (context) =>Seafishpage(
                                     index: categorie.categoryId,
+                                    pdname: categorie.name,
                                   ),
                                 ));
                           },
@@ -204,18 +207,23 @@ class _HomescreenState extends State<Homescreen> {
 
   void homeUser() async {
     final formdata = FormData.fromMap({
-      "user_id": 608,
+      "user_id": vaal,
       "key":
           "koFCpCMzm8hhn9ULj0BnUzZkpqM3rg9Mqdii3FwPRjBwZFQWriIJYgB5jjOhNIyasSl4RrmCFLW3tHDRtI39viQbYEP7nEkYvba2wstThYWjvkndZq0zaXJaWjuqeZo8vR3MMHa6OhBDKsFPmWOlIM4H1TgB1fudQndGKzUPg8YhAoaAoCxZ562zjbQdPO73ZkwyPV7iOIkyH11ZLAN42a5dgLH22Rs1VasEWBKdfkqMLPfDbLQpF9Ofqah4fqwc"
     });
     final result = await Apiclass().homeUserApi(formdata);
     if (result != null) {
       if (result.status == "success") {
+        
         setState(() {
           catelist.value.clear();
           catelist.value.addAll(result.data!.categories!);
         });
       }
     }
+  }
+  void getval ()async{
+    SharedPreferences sp = await SharedPreferences.getInstance();
+    vaal = sp.getInt("key");
   }
 }

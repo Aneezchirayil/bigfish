@@ -13,8 +13,10 @@ class _ReferpageState extends State<Referpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
+
         backgroundColor: Colors.black,
-        title: Text("Refer & Earn"),
+        title: Text("Refer & Earn",style: TextStyle(color: Colors.white),),
       ),
       body: Align(alignment: Alignment.topCenter,
         child: Column(

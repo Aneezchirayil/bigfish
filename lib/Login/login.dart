@@ -6,6 +6,7 @@ import 'package:bigfishaneez/Login/sign.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:motion_toast/motion_toast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -54,8 +55,9 @@ class _LoginpageState extends State<Loginpage> {
                   )]
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 15,right: 15,top: 20),
-                  child: Column(
+                  padding: const EdgeInsets.only(left: 15,right: 15,),
+                  child: ListView(
+                    physics: NeverScrollableScrollPhysics(),
                     children: [
                       TextField(
                         controller: eemail,
@@ -145,6 +147,8 @@ void loginUser()async{
     if(result!=null){
       if(result.status=="success"){
         showSuccessMessage(result.message!);
+        setval(result.userId);
+        print("############${result.userId}");
         Timer(Duration(seconds: 2), () { 
           Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage(),));
         });
@@ -155,6 +159,8 @@ void loginUser()async{
     }
   }
 }
-
-
+void setval (userId)async{
+  SharedPreferences sp =await SharedPreferences.getInstance();
+  sp.setInt("key", userId);
+}
 }

@@ -12,8 +12,9 @@ class _ContactpageState extends State<Contactpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Colors.black,
-        title: Text("Contact"),
+        title: Text("Contact",style: TextStyle(color: Colors.white)),
       ),
       body: ListView(
         children: [

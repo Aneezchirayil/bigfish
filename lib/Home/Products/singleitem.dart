@@ -1,5 +1,6 @@
 import 'package:bigfishaneez/Api/apiclass.dart';
 import 'package:bigfishaneez/Api/model/productmodel.dart';
+import 'package:bigfishaneez/Home/Screen/homepage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -37,8 +38,9 @@ class _SingproductState extends State<Singproduct> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+       iconTheme: IconThemeData(color: Colors.white), 
         backgroundColor: Colors.black,
-        title: Text(name.toString()),
+        title: Text(name.toString(),style: TextStyle(color: Colors.white)),
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart))
         ],
@@ -433,7 +435,7 @@ class _SingproductState extends State<Singproduct> {
   void itemUser() async {
     final formdata = FormData.fromMap({
       "product_id": widget.index1,
-      "user_id": 608,
+      "user_id": vaal,
       "key":
           "koFCpCMzm8hhn9ULj0BnUzZkpqM3rg9Mqdii3FwPRjBwZFQWriIJYgB5jjOhNIyasSl4RrmCFLW3tHDRtI39viQbYEP7nEkYvba2wstThYWjvkndZq0zaXJaWjuqeZo8vR3MMHa6OhBDKsFPmWOlIM4H1TgB1fudQndGKzUPg8YhAoaAoCxZ562zjbQdPO73ZkwyPV7iOIkyH11ZLAN42a5dgLH22Rs1VasEWBKdfkqMLPfDbLQpF9Ofqah4fqwc",
     });
